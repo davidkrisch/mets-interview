@@ -1,9 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    const players = [];
+    for (const player of req.playerDataById.values()) {
+        players.push(player);
+    }
+    console.log(players)
+    res.render('index.jade', {
+        title: "Welcome!",
+        players: players
+    });
 });
 
 module.exports = router;
