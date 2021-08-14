@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     }
     console.log(players)
     res.render('index.jade', {
-        title: "Welcome!",
+        title: "Hitter Stats",
         players: players
     });
 });

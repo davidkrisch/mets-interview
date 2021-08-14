@@ -2,13 +2,12 @@ extends layout
 
 block content
   h1 Hitting Stats
-  p= title
-  p Click a players name to see their stats
+  p Click on a player's name to see their stats
   p Hint: Use your browser's search feature to find a specific player.
 
   ul
     each player in players
       li
-        a(href='/players/' + player.player_id)= player.displayName
+        a(href='/players/' + player.player_id class="player_link")= player.displayName
     else
        li No player data

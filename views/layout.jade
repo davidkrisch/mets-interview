@@ -3,5 +3,38 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+    link(rel="stylesheet" href="/resources/demos/style.css")
+    script(src="https://code.jquery.com/jquery-1.12.4.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
   body
     block content
+    div(id="dialog")
+      table(id="stats_table")
+    script.
+        $( function() {
+          $( ".player_link" ).click(function(event) {
+            event.preventDefault();
+            const stats = [
+                "year", "player_age",
+                "b_ab", "b_walk",
+                "b_k_percent", "slg_percent",
+                "on_base_percent", "isolated_power",
+                "xba", "xslg", "woba", "xwoba",
+                "xobp", "xiso", "exit_velocity_avg",
+                "launch_angle_avg", "barrel_batted_rate"
+            ];
+            $( "#dialog" ).prop("title", event.target.text);
+            $("#stats_table").empty();
+            $.get(event.target.href, function(data) {
+              for (const stat of stats) {
+                $("#stats_table").append("<tr><td>" + stat + "</td><td>" + data[stat] + "</td></tr>");
+              }
+              $( "#dialog" ).dialog({
+                close: function() {
+                  $( "#dialog" ).dialog( "destroy" );
+                }
+              });
+            });
+          });
+        } );
