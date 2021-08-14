@@ -4,6 +4,9 @@ Hello!
 
 This is my attempt at the Mets' Technical Assessment for Software Engineers.
 
+This project was built and tested with node.js v14.2.0.  Please install that
+version or a newer one before proceeding with these instructions.
+
 Run the application by installing dependencies:
 ```
 npm install
@@ -29,3 +32,9 @@ curl -v http://localhost:3000/players/446334
 ```
 npm test
 ```
+
+Open source used on the backend:
+Node.js, express-generator, Expressjs, mocha, and supertest
+
+and on the frontend
+jQuery and jQuery-ui
