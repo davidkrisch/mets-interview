@@ -6,7 +6,13 @@ const csv = require('csv-parser');
 const fs = require('fs');
 const playerDataById = new Map();
 
-fs.createReadStream('stats.csv')
+const statsFile = process.env['STATS_FILE']
+if (!statsFile || !fs.existsSync(statsFile)) {
+    console.log("Please set STATS_FILE to path of player data csv");
+    process.exit(1);
+}
+
+fs.createReadStream(statsFile)
     .pipe(csv())
     .on('data', (data) => {
         playerDataById.set(data['player_id'], data);

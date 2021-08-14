@@ -1,7 +1,8 @@
 const assert = require('assert');
 const expect = require('chai').expect
 const request = require('supertest');
-const app = require('../app')
+process.env.STATS_FILE= 'test/stats.csv';
+const app = require('../app');
 
 describe('Unit testing the /players route', function() {
     it('should return 404 when player id not found', function() {

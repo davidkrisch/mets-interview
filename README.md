@@ -13,8 +13,9 @@ npm install
 ```
 and then running the app:
 ```
-DEBUG=mets-interview:* npm start
+STATS_FILE=<filename> DEBUG=mets-interview:* npm start
 ```
+Note: don't forget to replace `<filename>` with the name of the csv. 
 
 ### GET /players/:playerId
 
@@ -24,7 +25,7 @@ The application has a single REST endpoint to fetch a single player by their pla
 curl -v http://localhost:3000/players/446334
 ```
 
-### Running the test suite
+### Running the tests
 
 ```
 npm test
